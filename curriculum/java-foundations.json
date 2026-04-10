@@ -1,0 +1,31 @@
+{
+  "sections": [
+    {
+      "id": "java-foundations",
+      "title": "Java Foundations",
+      "level": 1,
+      "description": "Core Java syntax, data types, control flow — the building blocks",
+      "topics": [
+        { "id": "java-home", "title": "Java HOME", "order": 0 },
+        { "id": "java-intro", "title": "Java Intro", "order": 1 },
+        { "id": "java-get-started", "title": "Java Get Started", "order": 2 },
+        { "id": "java-syntax", "title": "Java Syntax", "order": 3 },
+        { "id": "java-output", "title": "Java Output", "order": 4 },
+        { "id": "java-comments", "title": "Java Comments", "order": 5 },
+        { "id": "java-variables", "title": "Java Variables", "order": 6 },
+        { "id": "java-datatypes", "title": "Java Data Types", "order": 7 },
+        { "id": "java-typecasting", "title": "Java Type Casting", "order": 8 },
+        { "id": "java-operators", "title": "Java Operators", "order": 9 },
+        { "id": "java-strings", "title": "Java Strings", "order": 10 },
+        { "id": "java-math", "title": "Java Math", "order": 11 },
+        { "id": "java-booleans", "title": "Java Booleans", "order": 12 },
+        { "id": "java-ifelse", "title": "Java If...Else", "order": 13 },
+        { "id": "java-switch", "title": "Java Switch", "order": 14 },
+        { "id": "java-while", "title": "Java While Loop", "order": 15 },
+        { "id": "java-for", "title": "Java For Loop", "order": 16 },
+        { "id": "java-break", "title": "Java Break/Continue", "order": 17 },
+        { "id": "java-arrays", "title": "Java Arrays", "order": 18 }
+      ]
+    }
+  ]
+}

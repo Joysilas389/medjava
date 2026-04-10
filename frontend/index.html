@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedJava — Learn Java. Build Medical Software. Save Lives.</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="css/medjava.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg mj-navbar" id="topNav">
+    <div class="container-fluid px-3">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <div class="mj-logo" id="logoMark"></div>
+        <span class="mj-brand-text">MedJava</span>
+      </a>
+      <div class="d-flex align-items-center gap-2">
+        <div class="mj-progress-pill d-none d-md-flex">
+          <i class="fas fa-chart-line"></i>
+          <span id="globalProgress">0%</span>
+        </div>
+        <button class="btn mj-btn-icon" id="themeToggle" title="Toggle theme">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        <button class="btn mj-btn-icon" id="historyToggle" title="Chat History">
+          <i class="fas fa-clock-rotate-left"></i>
+        </button>
+        <button class="btn mj-btn-icon" data-bs-toggle="modal" data-bs-target="#settingsModal" title="Settings">
+          <i class="fas fa-cog"></i>
+        </button>
+        <button class="btn mj-btn-icon d-lg-none" id="sidenavToggle" title="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Layout -->
+  <div class="mj-layout" id="mainLayout">
+    <!-- Side Navigation -->
+    <aside class="mj-sidenav" id="sideNav">
+      <div class="mj-sidenav-header">
+        <div class="mj-search-wrap">
+          <i class="fas fa-search"></i>
+          <input type="text" class="form-control" id="curriculumSearch" placeholder="Search topics...">
+        </div>
+      </div>
+      <div class="mj-sidenav-body" id="curriculumTree">
+        <!-- Populated by curriculum.js -->
+      </div>
+      <div class="mj-sidenav-footer">
+        <button class="btn btn-sm mj-btn-sandbox w-100" id="openSandbox">
+          <i class="fas fa-flask-vial"></i> Medical Projects Sandbox
+        </button>
+      </div>
+    </aside>
+
+    <!-- Center Chat Pane -->
+    <main class="mj-main" id="mainPane">
+      <!-- Welcome Screen -->
+      <div class="mj-welcome" id="welcomeScreen">
+        <div class="mj-welcome-logo" id="welcomeLogo"></div>
+        <h1 class="mj-welcome-title">Welcome, Dr. Agbesi</h1>
+        <p class="mj-welcome-subtitle">Learn Java. Build Medical Software. Save Lives.</p>
+        
+        <!-- Free Chat Input on Welcome Screen -->
+        <div class="mj-welcome-chat">
+          <div class="mj-claude-box" style="max-width:600px;width:100%;">
+            <textarea class="mj-claude-textarea" id="welcomeInput" placeholder="Ask me anything about Java or medical software..." rows="1"></textarea>
+            <div class="mj-claude-toolbar">
+              <div class="mj-claude-left">
+                <label class="mj-claude-attach" for="fileUpload" title="Attach file">
+                  <i class="fas fa-paperclip"></i>
+                </label>
+              </div>
+              <div class="mj-claude-right">
+                <button class="mj-claude-send" id="welcomeSendBtn" disabled>
+                  <i class="fas fa-arrow-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <input type="file" id="fileUpload" accept="image/*,.java,.txt,.json,.xml,.csv,.py,.js,.html,.pdf" style="display:none" multiple>
+          <div id="filePreview" style="display:none;max-width:600px;width:100%;margin-top:8px"></div>
+        </div>
+
+        <div class="mj-welcome-cards">
+          <button class="mj-quick-card" data-action="continue">
+            <i class="fas fa-play-circle"></i>
+            <span>Continue Learning</span>
+            <small>Pick up where you left off</small>
+          </button>
+          <button class="mj-quick-card" data-action="topic6">
+            <i class="fas fa-rotate-right"></i>
+            <span>Topic 6: Loops</span>
+            <small>Next topic in your journey</small>
+          </button>
+          <button class="mj-quick-card" data-action="sandbox">
+            <i class="fas fa-flask-vial"></i>
+            <span>Open Sandbox</span>
+            <small>Build medical projects</small>
+          </button>
+          <button class="mj-quick-card" data-action="settings">
+            <i class="fas fa-key"></i>
+            <span>Set API Key</span>
+            <small>Configure your tutor</small>
+          </button>
+        </div>
+      </div>
+
+      <!-- Chat Interface -->
+      <div class="mj-chat-container d-none" id="chatContainer">
+        <div class="mj-chat-header" id="chatHeader">
+          <button class="btn mj-btn-icon d-lg-none me-2" id="backToNav">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <div class="flex-grow-1">
+            <h6 class="mb-0" id="chatTopicTitle">Topic 6: Loops</h6>
+            <small class="text-muted" id="chatTopicSub">Java Foundations</small>
+          </div>
+          <button class="btn mj-btn-icon" id="notesToggle" title="My Notes">
+            <i class="fas fa-sticky-note"></i>
+          </button>
+          <button class="btn mj-btn-icon" id="topicCompleteBtn" title="Mark topic complete">
+            <i class="fas fa-check-circle"></i>
+          </button>
+        </div>
+        <div class="mj-chat-messages" id="chatMessages">
+          <!-- Messages populated dynamically -->
+        </div>
+        <!-- Scroll to bottom button -->
+        <button class="mj-scroll-bottom" id="scrollBottomBtn" style="display:none">
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="mj-chat-input-area">
+          <div class="mj-quick-chips" id="quickChips">
+            <button class="mj-chip" data-msg="Continue to next section">Continue</button>
+            <button class="mj-chip" data-msg="Explain that again, slower please">Explain slower</button>
+            <button class="mj-chip" data-msg="Show me the memory state">Show memory</button>
+            <button class="mj-chip" data-msg="Give me a medical analogy for this">Analogy</button>
+            <button class="mj-chip" data-msg="I want to try writing code myself">Let me try</button>
+            <button class="mj-chip" data-msg="Give me a drill exercise to practice">Drill me</button>
+            <button class="mj-chip" data-msg="Show me a visual simulation of this">Simulate</button>
+            <button class="mj-chip" data-msg="What medical problem does this solve?">Why this?</button>
+            <button class="mj-chip" data-msg="I'm confused, please rebuild from zero">Rebuild</button>
+            <button class="mj-chip" data-msg="Quiz me on what I just learned">Quiz me</button>
+            <button class="mj-chip" data-msg="Summarize everything we covered so far">Summary</button>
+          </div>
+          <!-- Claude-style chat box -->
+          <div class="mj-claude-box" id="claudeBox">
+            <textarea class="mj-claude-textarea" id="userInput" placeholder="Reply..." rows="1"></textarea>
+            <div class="mj-claude-toolbar">
+              <div class="mj-claude-left">
+                <label class="mj-claude-attach" for="chatFileUpload" title="Attach file">
+                  <i class="fas fa-paperclip"></i>
+                </label>
+              </div>
+              <div class="mj-claude-right">
+                <button class="mj-claude-send" id="sendBtn" disabled>
+                  <i class="fas fa-arrow-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <input type="file" id="chatFileUpload" accept="image/*,.java,.txt,.json,.xml,.csv,.py,.js,.html,.pdf" style="display:none" multiple>
+          <div id="chatFilePreview" style="display:none;padding:4px 0"></div>
+        </div>
+      </div>
+
+      <!-- Notes Slide Panel -->
+      <div class="mj-notes-panel" id="notesPanel" style="display:none">
+        <div class="mj-notes-header">
+          <h6><i class="fas fa-sticky-note"></i> My Notes</h6>
+          <button class="btn mj-btn-icon" id="closeNotes"><i class="fas fa-xmark"></i></button>
+        </div>
+        <textarea class="mj-notes-editor" id="notesEditor" placeholder="Write your personal notes for this topic here..."></textarea>
+        <div class="mj-notes-footer">
+          <button class="btn btn-sm mj-btn-sandbox" id="saveNotes"><i class="fas fa-save"></i> Save Notes</button>
+          <small class="text-muted" id="notesSaved"></small>
+        </div>
+      </div>
+
+      <!-- Sandbox Interface -->
+      <div class="mj-sandbox d-none" id="sandboxContainer">
+        <div class="mj-sandbox-header">
+          <button class="btn mj-btn-icon" id="closeSandbox">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <h6 class="mb-0">Medical Projects Sandbox</h6>
+          <div class="d-flex gap-2">
+            <button class="btn btn-sm mj-btn-run" id="runCode">
+              <i class="fas fa-play"></i> Run
+            </button>
+            <button class="btn btn-sm mj-btn-secondary" id="resetCode">
+              <i class="fas fa-rotate-left"></i> Reset
+            </button>
+            <button class="btn btn-sm mj-btn-secondary" id="askTutor">
+              <i class="fas fa-graduation-cap"></i> Ask Tutor
+            </button>
+          </div>
+        </div>
+        <div class="mj-sandbox-body">
+          <div class="mj-sandbox-projects" id="projectList">
+            <!-- Project list -->
+          </div>
+          <div class="mj-sandbox-editor">
+            <div class="mj-editor-tabs" id="editorTabs">
+              <button class="mj-tab active">Main.java</button>
+            </div>
+            <textarea class="mj-code-editor" id="codeEditor" spellcheck="false">// Write your Java code here
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, Dr. Agbesi!");
+    }
+}</textarea>
+          </div>
+          <div class="mj-sandbox-console">
+            <div class="mj-sandbox-divider" id="sandboxDivider"></div>
+            <div class="mj-console-header">
+              <span><i class="fas fa-terminal"></i> Console</span>
+              <div class="d-flex gap-1">
+                <button class="btn btn-sm mj-btn-icon" id="copyLog" title="Copy log">
+                  <i class="fas fa-copy"></i>
+                </button>
+                <button class="btn btn-sm mj-btn-icon" id="clearConsole" title="Clear">
+                  <i class="fas fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+            <div class="mj-console-output" id="consoleOutput">
+              <span class="text-muted">Press Run to compile and execute...</span>
+            </div>
+            <div class="mj-console-stdin d-none" id="stdinArea">
+              <input type="text" class="form-control form-control-sm" id="stdinInput" placeholder="Type input and press Enter...">
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Right Context Panel -->
+    <aside class="mj-context-panel d-none d-xl-flex" id="contextPanel">
+      <div class="mj-context-section">
+        <h6><i class="fas fa-info-circle"></i> Current Topic</h6>
+        <div id="topicMeta">
+          <p class="text-muted small">Select a topic to begin.</p>
+        </div>
+      </div>
+      <div class="mj-context-section">
+        <h6><i class="fas fa-book-medical"></i> Medical Glossary</h6>
+        <div id="glossary" class="mj-glossary">
+          <div class="mj-glossary-item">
+            <strong>EMR</strong>
+            <p>Electronic Medical Record — digital version of a patient chart</p>
+          </div>
+          <div class="mj-glossary-item">
+            <strong>HL7</strong>
+            <p>Health Level Seven — standard for exchanging medical data</p>
+          </div>
+          <div class="mj-glossary-item">
+            <strong>FHIR</strong>
+            <p>Fast Healthcare Interoperability Resources — modern health data standard</p>
+          </div>
+          <div class="mj-glossary-item">
+            <strong>DICOM</strong>
+            <p>Digital Imaging and Communications in Medicine</p>
+          </div>
+        </div>
+      </div>
+      <div class="mj-context-section">
+        <button class="btn mj-btn-web w-100" id="askWebBtn">
+          <i class="fas fa-globe"></i> Ask the Web
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal fade" id="settingsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content mj-modal">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="fas fa-cog"></i> Settings</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Anthropic API Key</label>
+            <div class="input-group">
+              <input type="password" class="form-control" id="apiKeyInput" placeholder="sk-ant-...">
+              <button class="btn mj-btn-secondary" id="saveKeyBtn">
+                <i class="fas fa-lock"></i> Save
+              </button>
+            </div>
+            <div class="form-text" id="keyStatus">No key saved.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Model</label>
+            <select class="form-select" id="modelSelect">
+              <option value="claude-sonnet-4-20250514" selected>Claude Sonnet 4 (Recommended)</option>
+              <option value="claude-opus-4-6">Claude Opus 4.6</option>
+              <option value="claude-haiku-4-5-20251001">Claude Haiku 4.5</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Max Tokens per Response</label>
+            <input type="range" class="form-range" id="maxTokens" min="2000" max="16000" step="1000" value="8000">
+            <div class="form-text"><span id="tokenDisplay">8000</span> tokens</div>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="webScrapeToggle" checked>
+            <label class="form-check-label" for="webScrapeToggle">Enable web-scrape assist</label>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Theme</label>
+            <select class="form-select" id="themeSelect">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="auto">Auto (System)</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Font Size</label>
+            <select class="form-select" id="fontSizeSelect">
+              <option value="small">Small</option>
+              <option value="medium" selected>Medium</option>
+              <option value="large">Large</option>
+            </select>
+          </div>
+          <hr>
+          <div class="d-flex gap-2">
+            <button class="btn mj-btn-secondary flex-fill" id="exportProgress">
+              <i class="fas fa-download"></i> Export Progress
+            </button>
+            <button class="btn btn-outline-danger flex-fill" id="clearAllData">
+              <i class="fas fa-trash"></i> Clear All Data
+            </button>
+          </div>
+          <div class="mt-2">
+            <button class="btn mj-btn-secondary w-100" id="rotateKeyBtn" style="display:none">
+              <i class="fas fa-rotate"></i> Rotate API Key
+            </button>
+            <button class="btn btn-outline-danger w-100 mt-2" id="deleteKeyBtn" style="display:none">
+              <i class="fas fa-key"></i> Delete API Key
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clear Data Confirmation Modal -->
+  <div class="modal fade" id="clearConfirmModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content mj-modal">
+        <div class="modal-header">
+          <h6 class="modal-title">Confirm Clear</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>This will delete all saved conversations, progress, and your encrypted API key. This cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-sm mj-btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-sm btn-danger" id="confirmClear">Delete Everything</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- History Panel -->
+  <div class="mj-history-panel" id="historyPanel">
+    <div class="mj-history-header">
+      <h6><i class="fas fa-clock-rotate-left"></i> Chat History</h6>
+      <button class="btn mj-btn-icon" id="closeHistory">
+        <i class="fas fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mj-history-search">
+      <input type="text" id="historySearch" placeholder="Search conversations...">
+    </div>
+    <div class="mj-history-tabs">
+      <button class="mj-htab active" data-filter="all">All</button>
+      <button class="mj-htab" data-filter="starred"><i class="fas fa-star"></i> Starred</button>
+    </div>
+    <div class="mj-history-list" id="historyList">
+      <div class="mj-history-empty">No conversations yet.</div>
+    </div>
+  </div>
+
+  <!-- History Item Context Menu -->
+  <div class="mj-history-menu" id="historyMenu" style="display:none">
+    <button class="mj-hmenu-item" data-action="rename"><i class="fas fa-pen"></i> Rename</button>
+    <button class="mj-hmenu-item" data-action="star"><i class="fas fa-star"></i> Star</button>
+    <button class="mj-hmenu-item mj-hmenu-danger" data-action="delete"><i class="fas fa-trash"></i> Delete</button>
+  </div>
+
+  <!-- Rename Modal -->
+  <div class="modal fade" id="renameModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content mj-modal">
+        <div class="modal-header">
+          <h6 class="modal-title">Rename Conversation</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" id="renameInput" placeholder="New name...">
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-sm mj-btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-sm mj-btn-send" id="confirmRename" style="width:auto;height:auto;padding:6px 16px;">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.8/purify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+  <script src="js/crypto.js"></script>
+  <script src="js/curriculum.js"></script>
+  <script src="js/sim-renderer.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/sandbox.js"></script>
+  <script src="js/scraper-client.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/innovations.js"></script>
+</body>
+</html>

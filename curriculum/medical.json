@@ -1,0 +1,71 @@
+{
+  "sections": [
+    {
+      "id": "med-software",
+      "title": "Medical Software Engineering",
+      "topics": [
+        { "id": "med-hospital-model", "title": "Modeling a Hospital System in Java" },
+        { "id": "med-patient-reg", "title": "Patient Registration System" },
+        { "id": "med-emr", "title": "Electronic Medical Records (EMR) Design" },
+        { "id": "med-lab", "title": "Laboratory Information System" },
+        { "id": "med-prescription", "title": "Prescription & Drug Interaction System" },
+        { "id": "med-icu", "title": "ICU Vital Sign Monitoring" },
+        { "id": "med-device", "title": "Medical Device Integration (Serial/USB)" },
+        { "id": "med-hl7", "title": "HL7 & FHIR Protocol Handling" },
+        { "id": "med-dicom", "title": "DICOM Medical Imaging Basics" }
+      ]
+    },
+    {
+      "id": "med-security",
+      "title": "Security for Patient Data",
+      "topics": [
+        { "id": "sec-hashing", "title": "Hashing Patient IDs (SHA-256)" },
+        { "id": "sec-aes", "title": "AES-256 Encryption for Records" },
+        { "id": "sec-rsa", "title": "RSA for Record Exchange" },
+        { "id": "sec-signatures", "title": "Digital Signatures for Audit Trails" },
+        { "id": "sec-access", "title": "HIPAA-Style Access Control" },
+        { "id": "sec-api", "title": "Secure API Communication (JWT)" }
+      ]
+    },
+    {
+      "id": "med-ml",
+      "title": "Machine Learning for Medicine",
+      "topics": [
+        { "id": "ml-fundamentals", "title": "ML Fundamentals in Java" },
+        { "id": "ml-features", "title": "Feature Engineering from Patient Records" },
+        { "id": "ml-classification", "title": "Disease Prediction (Classification)" },
+        { "id": "ml-regression", "title": "Dosage Recommendation (Regression)" },
+        { "id": "ml-evaluation", "title": "Model Evaluation (Sensitivity, Specificity, AUC)" }
+      ]
+    },
+    {
+      "id": "med-dl",
+      "title": "Deep Learning for Medical Imaging",
+      "topics": [
+        { "id": "dl-nn-basics", "title": "Neural Network Basics" },
+        { "id": "dl-cnn", "title": "CNNs for X-ray / MRI" },
+        { "id": "dl-dl4j", "title": "DL4J Pre-trained Models" },
+        { "id": "dl-ethics", "title": "Ethics and Validation of Medical AI" }
+      ]
+    },
+    {
+      "id": "med-domains",
+      "title": "Extended Medical Domains",
+      "topics": [
+        { "id": "dom-cardiology", "title": "Cardiology Software" },
+        { "id": "dom-radiology", "title": "Radiology & Imaging Software" },
+        { "id": "dom-telemedicine", "title": "Telemedicine Platforms" },
+        { "id": "dom-oncology", "title": "Oncology & Chemotherapy" },
+        { "id": "dom-ophthalmology", "title": "Ophthalmology Software" },
+        { "id": "dom-obgyn", "title": "Obstetrics & Gynecology" },
+        { "id": "dom-pediatrics", "title": "Pediatrics & Neonatology" },
+        { "id": "dom-emergency", "title": "Emergency Medicine & Triage" },
+        { "id": "dom-lab", "title": "Laboratory Information Systems" },
+        { "id": "dom-pharmacy", "title": "Pharmacy Information Systems" },
+        { "id": "dom-mental", "title": "Mental Health Software" },
+        { "id": "dom-public-health", "title": "Public Health & Epidemiology" },
+        { "id": "dom-cdss", "title": "Clinical Decision Support Systems" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "sections": [
+    {
+      "id": "java-oop",
+      "title": "Java Classes (OOP — The Big One)",
+      "level": 3,
+      "description": "Object-Oriented Programming — the most critical section for Dr. Agbesi",
+      "teachingNotes": "SLOW DOWN. Real-world model FIRST, class design SECOND, syntax LAST.",
+      "topics": [
+        { "id": "java-oop-intro", "title": "Java OOP Motivation", "order": 25 },
+        { "id": "java-classes", "title": "Classes/Objects", "order": 26 },
+        { "id": "java-attributes", "title": "Class Attributes", "order": 27 },
+        { "id": "java-class-methods", "title": "Class Methods", "order": 28 },
+        { "id": "java-constructors", "title": "Constructors", "order": 29 },
+        { "id": "java-this", "title": "this Keyword", "order": 30 },
+        { "id": "java-modifiers", "title": "Modifiers", "order": 31 },
+        { "id": "java-encapsulation", "title": "Encapsulation", "order": 32 },
+        { "id": "java-packages", "title": "Packages / API", "order": 33 },
+        { "id": "java-inheritance", "title": "Inheritance", "order": 34 },
+        { "id": "java-polymorphism", "title": "Polymorphism", "order": 35 },
+        { "id": "java-super", "title": "super Keyword", "order": 36 },
+        { "id": "java-inner-classes", "title": "Inner Classes", "order": 37 },
+        { "id": "java-abstraction", "title": "Abstraction", "order": 38 },
+        { "id": "java-interface", "title": "Interface", "order": 39 },
+        { "id": "java-enum", "title": "Enum", "order": 40 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mj-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2E75B6"/>
+      <stop offset="100%" style="stop-color:#F89820"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#mj-grad)"/>
+  <path d="M14 22 h24 v20 q0 10 -12 10 q-12 0 -12 -10 z" fill="white" opacity="0.95"/>
+  <path d="M38 27 h5 q5 0 5 7 q0 7 -5 7 h-5" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+  <text x="17" y="40" font-family="system-ui" font-weight="900" font-size="17" fill="#2E75B6">M</text>
+</svg>

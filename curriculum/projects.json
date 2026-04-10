@@ -1,0 +1,85 @@
+{
+  "starterProjects": [
+    { "id": "proj-triage", "name": "Vital Signs Triage", "teaches": "if/else, operators, input" },
+    { "id": "proj-bmi", "name": "BMI + Category Classifier", "teaches": "double math, categories, conditionals" },
+    { "id": "proj-records", "name": "Patient Records Manager", "teaches": "Files, ArrayList, simple OOP" },
+    { "id": "proj-icu", "name": "ICU Monitor", "teaches": "Threads, loops, real-time checks" },
+    { "id": "proj-prescription", "name": "Prescription Calculator", "teaches": "Weight-based math, validation" },
+    { "id": "proj-emr", "name": "Encrypted EMR Service", "teaches": "AES encryption, file I/O" },
+    { "id": "proj-hl7", "name": "HL7 Message Parser", "teaches": "String parsing, split logic" },
+    { "id": "proj-lab", "name": "Lab Result Analyzer", "teaches": "Ranges, flags, alerts" },
+    { "id": "proj-drugs", "name": "Drug Interaction Checker", "teaches": "HashMap, set lookups" },
+    { "id": "proj-ml", "name": "ML Diagnosis Assistant", "teaches": "DL4J/Weka basics, classification" }
+  ],
+  "specializedProjects": {
+    "cardiology": [
+      { "id": "proj-c1", "name": "ECG R-Peak Detector" },
+      { "id": "proj-c2", "name": "Heart Rate Variability Calculator" },
+      { "id": "proj-c3", "name": "Arrhythmia Classifier" },
+      { "id": "proj-c4", "name": "CHA2DS2-VASc Risk Score" },
+      { "id": "proj-c5", "name": "Real-time Heart Rate Monitor" }
+    ],
+    "radiology": [
+      { "id": "proj-r1", "name": "DICOM File Reader" },
+      { "id": "proj-r2", "name": "DICOM Pixel Data Extractor" },
+      { "id": "proj-r3", "name": "Minimal DICOM Viewer" },
+      { "id": "proj-r4", "name": "PACS C-FIND Client" },
+      { "id": "proj-r5", "name": "ROI Measurement Tool" }
+    ],
+    "telemedicine": [
+      { "id": "proj-t1", "name": "Appointment Booking Service" },
+      { "id": "proj-t2", "name": "JWT Authentication Service" },
+      { "id": "proj-t3", "name": "Secure Messaging Backend" },
+      { "id": "proj-t4", "name": "E-Prescription PDF Generator" },
+      { "id": "proj-t5", "name": "Wearable Data Ingestion API" }
+    ],
+    "oncology": [
+      { "id": "proj-o1", "name": "Body Surface Area Calculator" },
+      { "id": "proj-o2", "name": "Chemotherapy Dose Calculator" },
+      { "id": "proj-o3", "name": "CHOP Protocol Tracker" },
+      { "id": "proj-o4", "name": "Drug Interaction Checker (Oncology)" }
+    ],
+    "emergency": [
+      { "id": "proj-e1", "name": "ESI Triage Decision Tree" },
+      { "id": "proj-e2", "name": "Glasgow Coma Scale Calculator" },
+      { "id": "proj-e3", "name": "qSOFA/SOFA Sepsis Screening" },
+      { "id": "proj-e4", "name": "START Mass Casualty Triage" }
+    ],
+    "pediatrics": [
+      { "id": "proj-k1", "name": "WHO Growth Chart Percentile" },
+      { "id": "proj-k2", "name": "Age-Weight Dosing Calculator" },
+      { "id": "proj-k3", "name": "APGAR Score Calculator" },
+      { "id": "proj-k4", "name": "EPI Immunization Tracker (Ghana)" }
+    ],
+    "laboratory": [
+      { "id": "proj-l1", "name": "Specimen Tracking System" },
+      { "id": "proj-l2", "name": "Result Entry with Flagging" },
+      { "id": "proj-l3", "name": "Westgard QC Rules" },
+      { "id": "proj-l4", "name": "Antibiogram Manager" }
+    ],
+    "pharmacy": [
+      { "id": "proj-ph1", "name": "Drug Database Lookup" },
+      { "id": "proj-ph2", "name": "Drug-Drug Interaction Checker" },
+      { "id": "proj-ph3", "name": "Inventory Manager with Expiry" },
+      { "id": "proj-ph4", "name": "Prescription Parser" }
+    ],
+    "mentalHealth": [
+      { "id": "proj-m1", "name": "PHQ-9 Depression Screening" },
+      { "id": "proj-m2", "name": "GAD-7 Anxiety Screening" },
+      { "id": "proj-m3", "name": "Suicide Risk Stratification" }
+    ],
+    "publicHealth": [
+      { "id": "proj-h1", "name": "Disease Surveillance Pipeline" },
+      { "id": "proj-h2", "name": "Outbreak Detection Algorithm" },
+      { "id": "proj-h3", "name": "Vaccination Coverage Calculator" },
+      { "id": "proj-h4", "name": "DHIS2 Data Import Tool" }
+    ]
+  },
+  "capstone": {
+    "id": "proj-capstone",
+    "name": "Integrated Hospital Information System",
+    "description": "Unified HIS combining Patient Registration, EMR, Lab, Pharmacy, Imaging, Appointments, and Billing",
+    "components": ["Patient", "Doctor", "Nurse", "Ward", "Appointment", "Prescription", "LabTest", "BillingRecord"],
+    "technologies": ["OOP", "JDBC/SQLite", "AES Encryption", "JUnit", "CLI Interface"]
+  }
+}

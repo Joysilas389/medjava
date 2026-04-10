@@ -1,0 +1,63 @@
+{
+  "name": "medjava-desktop",
+  "version": "1.0.0",
+  "description": "MedJava — Learn Java. Build Medical Software. Save Lives.",
+  "main": "desktop/main.js",
+  "author": "Dr. Agbesi",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build-win": "electron-builder --win",
+    "build-mac": "electron-builder --mac",
+    "build-linux": "electron-builder --linux",
+    "build-all": "electron-builder --win --mac --linux"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.medjava.app",
+    "productName": "MedJava",
+    "copyright": "Copyright © 2025 MedJava",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "desktop/**/*",
+      "frontend/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "frontend/assets/icon.png",
+      "artifactName": "MedJava-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerHeaderIcon": "frontend/assets/icon.png",
+      "uninstallerIcon": "frontend/assets/icon.png",
+      "installerIcon": "frontend/assets/icon.png",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "MedJava"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "icon": "frontend/assets/icon.png",
+      "category": "public.app-category.education",
+      "artifactName": "MedJava-${version}.${ext}"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "frontend/assets/icon.png",
+      "category": "Education",
+      "artifactName": "MedJava-${version}.${ext}"
+    }
+  }
+}
